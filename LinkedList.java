@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LinkedList
+class LinkedList
 {
     public Node head;
     public Node tail;
@@ -67,10 +67,11 @@ public class LinkedList
                 node.next = null;
             } else {
                 prevNode.next = nextNode;
-                if (nextNode == null) {
-                    this.tail = prevNode;
-                }
-            }                
+            }
+            
+            if (nextNode == null) {
+                this.tail = prevNode;
+            }
             return true;
         } else {
             prevNode = node;
@@ -93,9 +94,10 @@ public class LinkedList
                     this.head = nextNode;
                 } else {
                     prevNode.next = nextNode;
-                    if (nextNode == null) {
-                        this.tail = prevNode;
-                    }
+                }
+                
+                if (nextNode == null) {
+                    this.tail = prevNode;
                 }
             } else {
                 prevNode = node;
@@ -141,15 +143,6 @@ public class LinkedList
         _nodeAfter.next = _nodeToInsert;
         _nodeAfter.next.next = oldNext;                
     }
-
-     public void print() 
-     {
-         Node node = this.head;
-         while (node != null) {
-             System.out.println(node.value);
-             node = node.next;
-         }
-     }
 }
 
 class Node
@@ -162,3 +155,4 @@ class Node
        next = null;
      }
 }
+
