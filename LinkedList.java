@@ -139,9 +139,13 @@ class LinkedList
             this.addInHead(_nodeToInsert);
             return;
         }
+        
         Node oldNext = _nodeAfter.next;
         _nodeAfter.next = _nodeToInsert;
-        _nodeAfter.next.next = oldNext;                
+        _nodeAfter.next.next = oldNext;
+        if (oldNext == null) {
+            this.tail = _nodeToInsert;
+        }                
     }
 }
 
