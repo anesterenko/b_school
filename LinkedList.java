@@ -54,31 +54,31 @@ class LinkedList
 
     public boolean remove(int _value)
     {
-    Node node = this.head;
-    Node prevNode = null;
-    Node nextNode = null;
+        Node node = this.head;
+        Node prevNode = null;
+        Node nextNode = null;
 
-    while (node != null) {
-        nextNode = node.next;
-        
-        if (node.value == _value) {
-            if (prevNode == null) {
-                this.head = nextNode;
-                node.next = null;
-            } else {
-                prevNode.next = nextNode;
-            }
+        while (node != null) {
+            nextNode = node.next;
             
-            if (nextNode == null) {
-                this.tail = prevNode;
+            if (node.value == _value) {
+                if (prevNode == null) {
+                    this.head = nextNode;
+                    node.next = null;
+                } else {
+                    prevNode.next = nextNode;
+                }
+                
+                if (nextNode == null) {
+                    this.tail = prevNode;
+                }
+                return true;
+            } else {
+                prevNode = node;
+                node = nextNode;            
             }
-            return true;
-        } else {
-            prevNode = node;
-            node = nextNode;            
         }
-    }
-        return false;
+            return false;
     }
 
     public void removeAll(int _value)
