@@ -1,4 +1,6 @@
+package anesterenko.b_school.linkedlist;
 import java.util.*;
+
 
 class LinkedListsSum {
 
