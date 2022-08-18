@@ -31,8 +31,8 @@ public class LinkedList2Dummy {
     public Node find(int _value)
     {
         Node node = this.head.next;
-        while (node != null) {
-            if (getNodeValue(node) == _value) {
+        while (isUsualNode(node)) {
+            if (node.value == _value) {
                 return node;
             }
             node = node.next;
@@ -45,8 +45,8 @@ public class LinkedList2Dummy {
         ArrayList<Node> nodes = new ArrayList<>();
         Node node = this.head.next;
 
-        while (node != null) {
-            if (getNodeValue(node) == _value) {
+        while (isUsualNode(node)) {
+            if (node.value == _value) {
                 nodes.add(node);
             }
             node = node.next;
@@ -56,8 +56,8 @@ public class LinkedList2Dummy {
 
     public boolean remove(int _value) {
         Node node = this.head.next;
-        while (node != null) {
-            if (getNodeValue(node) == _value) {
+        while (isUsualNode(node)) {
+            if (node.value == _value) {
                 removeNode(node);
                 return true;
             }
@@ -68,8 +68,8 @@ public class LinkedList2Dummy {
 
     public void removeAll(int _value) {
         Node node = this.head.next;
-        while (node != null) {
-            if (getNodeValue(node) == _value) {
+        while (isUsualNode(node)) {
+            if (node.value == _value) {
                 removeNode(node);
             }
             node = node.next;
@@ -80,7 +80,7 @@ public class LinkedList2Dummy {
     {
         int counter = 0;
         Node node = this.head.next;
-        while (node.next != null) {
+        while (isUsualNode(node)) {
             counter++;
             node = node.next;
         }
@@ -104,21 +104,15 @@ public class LinkedList2Dummy {
         _nodeAfter.next = _nodeToInsert;
         _nodeToInsert.prev = _nodeAfter;
     }
-
-    private int getNodeValue(Node node)
-    {
-        return node.value;
-    }
-
-    private Integer getNodeValue(DummyNode node)
-    {
-        return null;
-    }
-
     private void removeNode(Node node)
     {
         node.prev.next = node.next;
         node.next.prev = node.prev;
+    }
+
+    private boolean isUsualNode(Node node)
+    {
+        return !(node instanceof DummyNode);
     }
 }
 
