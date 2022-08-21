@@ -8,7 +8,7 @@ public class DynArray<T>
     Class clazz;
 
     private static final int DEFAULT_CAPACITY = 16;
-    private static final int MIN_FILL_PERCENTAGE = 50;
+    private static final int MIN_FILLING_LEVEL_PERCENT = 50;
     private static final double EXTENSION_RATE = 2;
     private static final double COMPRESSION_RATE = 1.5;
 
@@ -24,7 +24,7 @@ public class DynArray<T>
         if (array == null) {
             array = (T[]) Array.newInstance(this.clazz, new_capacity);
         } else {
-            T[] newArray = (T[]) Array.newInstance(clazz, capacity);
+            T[] newArray = (T[]) Array.newInstance(clazz, new_capacity);
             System.arraycopy(array, 0, newArray, 0, count);
             array = newArray;
         }
@@ -33,7 +33,7 @@ public class DynArray<T>
 
     public T getItem(int index)
     {
-        if (index < 0 || index >= capacity) {
+        if (index < 0 || index >= count) {
             throw new IndexOutOfBoundsException();
         }
 
@@ -45,6 +45,7 @@ public class DynArray<T>
         if (needToExtendCapacity()) {
             makeArray(getExtendedCapacitySize());
         }
+
         Array.set(array, count, itm);
         count++;
     }
@@ -62,19 +63,21 @@ public class DynArray<T>
         for (int i = count - 1; i >= index; i--) {
             Array.set(array, i + 1, Array.get(array, i));
         }
+
         Array.set(array, index, itm);
         count++;
     }
 
     public void remove(int index)
     {
-        if (index < 0 || index > count) {
+        if (index < 0 || index > count - 1) {
             throw new IndexOutOfBoundsException();
         }
 
         for (int i = index + 1; i < count; i++) {
             Array.set(array, i - 1, Array.get(array, i));
         }
+
         count--;
         if (needToCompressCapacity()) {
             makeArray(getCompressedCapacitySize());
@@ -93,7 +96,7 @@ public class DynArray<T>
 
     private boolean needToCompressCapacity()
     {
-        return getFilledCapacityPercentage() < MIN_FILL_PERCENTAGE;
+        return getFillingPercent() < MIN_FILLING_LEVEL_PERCENT;
     }
 
     private boolean needToExtendCapacity()
@@ -101,15 +104,8 @@ public class DynArray<T>
         return count >= capacity;
     }
 
-    private double getFilledCapacityPercentage()
+    private double getFillingPercent()
     {
         return (count / capacity) * 100;
-    }
-
-    public void print()
-    {
-        for (int i = 0; i < capacity; i++) {
-            System.out.println(String.format("[%d]: %d", i, Array.get(array, i)));
-        }
     }
 }
