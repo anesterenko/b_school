@@ -42,8 +42,8 @@ public class DynArray<T>
 
     public void append(T itm)
     {
-        if (needToExtendCapacity()) {
-            makeArray(getExtendedCapacitySize());
+        if (isNeededToExtendBuffer()) {
+            makeArray(getExtendedBufferSize());
         }
 
         Array.set(array, count, itm);
@@ -56,8 +56,8 @@ public class DynArray<T>
             throw new IndexOutOfBoundsException();
         }
 
-        if (needToExtendCapacity()) {
-            makeArray(getExtendedCapacitySize());
+        if (isNeededToExtendBuffer()) {
+            makeArray(getExtendedBufferSize());
         }
 
         for (int i = count - 1; i >= index; i--) {
@@ -79,27 +79,27 @@ public class DynArray<T>
         }
 
         count--;
-        if (needToCompressCapacity()) {
-            makeArray(getCompressedCapacitySize());
+        if (isNeededToCompressBuffer()) {
+            makeArray(getCompressedBufferSize());
         }
     }
 
-    private int getExtendedCapacitySize()
+    private int getExtendedBufferSize()
     {
         return (int)Math.max(capacity * EXTENSION_RATE, DEFAULT_CAPACITY);
     }
 
-    private int getCompressedCapacitySize()
+    private int getCompressedBufferSize()
     {
         return (int)Math.max(capacity / COMPRESSION_RATE, DEFAULT_CAPACITY);
     }
 
-    private boolean needToCompressCapacity()
+    private boolean isNeededToCompressBuffer()
     {
         return getFillingPercent() < MIN_FILLING_LEVEL_PERCENT;
     }
 
-    private boolean needToExtendCapacity()
+    private boolean isNeededToExtendBuffer()
     {
         return count >= capacity;
     }
