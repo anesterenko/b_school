@@ -106,6 +106,6 @@ public class DynArray<T>
 
     private double getFillingPercent()
     {
-        return (count / capacity) * 100;
+        return ((double)count / (double)capacity) * 100;
     }
 }
