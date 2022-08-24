@@ -32,15 +32,9 @@ public class PostfixOperations
             if (isReturnOperation(symbol)) {
                 return stack.pop();
             }
-
-            int newValue;
-            if (isNumber(symbol)) {
-                newValue = Integer.parseInt(symbol);
-            } else {
-                int x = stack.pop();
-                int y = stack.pop();
-                newValue = apply(x, y, getOperation(symbol));
-            }
+            int newValue = isNumber(symbol) ?
+                    Integer.parseInt(symbol) :
+                    performOperation(symbol, stack);
             stack.push(newValue);
         }
         return null;
@@ -54,6 +48,13 @@ public class PostfixOperations
     private static boolean isNumber(String symbol)
     {
         return symbol.matches("\\d+");
+    }
+
+    private static Integer performOperation(String symbol, Stack<Integer> stack)
+    {
+        int x = stack.pop();
+        int y = stack.pop();
+        return apply(x, y, getOperation(symbol));
     }
 
     private static int apply(int x, int y, IntegerMath op)
@@ -77,5 +78,4 @@ public class PostfixOperations
         }
         return operation;
     }
-
 }
