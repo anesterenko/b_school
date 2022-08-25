@@ -11,13 +11,13 @@ public class Queue<T>
         count = 0;
     }
 
-    public void Enqueue(T item)
+    public void enqueue(T item)
     {
         queue.addLast(item);
         count++;
     }
 
-    public T Dequeue()
+    public T dequeue()
     {
         if (count == 0) {
             return null;
@@ -26,16 +26,16 @@ public class Queue<T>
         return queue.pollFirst();
     }
 
-    public int Size()
+    public int size()
     {
         return count;
     }
 
-    public void Rotate(int n)
+    public void rotate(int n)
     {
         int i = n;
         while (i > 0) {
-            Enqueue(Dequeue());
+            enqueue(dequeue());
             i--;
         }
     }

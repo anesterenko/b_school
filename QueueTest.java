@@ -15,39 +15,39 @@ public class QueueTest
     @Test
     public void testDequeue()
     {
-        queue.Enqueue(1);
-        queue.Enqueue(2);
+        queue.enqueue(1);
+        queue.enqueue(2);
 
-        Assert.assertEquals(1, (int) queue.Dequeue());
+        Assert.assertEquals(1, (int) queue.dequeue());
     }
 
     @Test
     public void testDequeue_emptyQueue()
     {
-        Assert.assertNull(queue.Dequeue());
+        Assert.assertNull(queue.dequeue());
     }
 
     @Test
     public void testSize_emptyQueue()
     {
-        Assert.assertEquals(0, queue.Size());
+        Assert.assertEquals(0, queue.size());
     }
 
     @Test
     public void testSize()
     {
-        queue.Enqueue(1);
-        queue.Enqueue(2);
-        Assert.assertEquals(2, queue.Size());
+        queue.enqueue(1);
+        queue.enqueue(2);
+        Assert.assertEquals(2, queue.size());
     }
 
     @Test
     public void testRotate()
     {
-        queue.Enqueue(1);
-        queue.Enqueue(2);
-        queue.Enqueue(3);
-        queue.Rotate(2);
-        Assert.assertEquals(3, (int)queue.Dequeue());
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.rotate(2);
+        Assert.assertEquals(3, (int)queue.dequeue());
     }
 }
