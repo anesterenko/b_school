@@ -1,39 +1,36 @@
 public class QueueTwoStacks<T>
 {
-    private final Stack<T> stack;
+    private final Stack<T> in;
 
-    private final Stack<T> tmpStack;
+    private final Stack<T> out;
 
     public QueueTwoStacks()
     {
-        stack = new Stack<>();
-        tmpStack = new Stack<>();
+        in = new Stack<>();
+        out = new Stack<>();
     }
 
     public void enqueue(T item)
     {
-        stack.push(item);
+        in.push(item);
     }
 
     public T dequeue()
     {
-        if (stack.size() == 0) {
+        if (in.size() == 0) {
             return null;
         }
 
-        while (stack.size() != 0) {
-            tmpStack.push(stack.pop());
+        if (out.size() == 0) {
+            while (in.size() != 0) {
+                out.push(in.pop());
+            }
         }
-
-        T head = tmpStack.pop();
-        while (tmpStack.size() != 0) {
-            stack.push(tmpStack.pop());
-        }
-        return head;
+        return out.pop();
     }
 
     public int size()
     {
-        return stack.size();
+        return in.size();
     }
 }
