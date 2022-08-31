@@ -4,24 +4,20 @@ public class QueueTwoStacks<T>
 
     private final Stack<T> tmpStack;
 
-    private int count;
-
     public QueueTwoStacks()
     {
         stack = new Stack<>();
         tmpStack = new Stack<>();
-        count = 0;
     }
 
     public void enqueue(T item)
     {
         stack.push(item);
-        count++;
     }
 
     public T dequeue()
     {
-        if (count == 0) {
+        if (stack.size() == 0) {
             return null;
         }
 
@@ -29,25 +25,15 @@ public class QueueTwoStacks<T>
             tmpStack.push(stack.pop());
         }
 
-        T first = tmpStack.pop();
+        T head = tmpStack.pop();
         while (tmpStack.size() != 0) {
             stack.push(tmpStack.pop());
         }
-        count--;
-        return first;
+        return head;
     }
 
     public int size()
     {
-        return count;
-    }
-
-    public void rotate(int n)
-    {
-        int i = n;
-        while (i > 0) {
-            enqueue(dequeue());
-            i--;
-        }
+        return stack.size();
     }
 }
