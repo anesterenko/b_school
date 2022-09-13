@@ -1,60 +1,51 @@
+import java.util.LinkedList;
+import java.util.ListIterator;
+
 public class PowerSet
 {
-    private final String [] slots;
-    private int filled;
-    private static final int SIZE = 20000;
-
+    private final LinkedList<String> list;
 
     public PowerSet()
     {
-        slots = new String[SIZE];
-        filled = 0;
-        for(int i = 0; i < SIZE; i++) slots[i] = null;
-    }
-
-    private int hashFun(String value)
-    {
-        return (Math.abs(value.hashCode() % SIZE));
+        list = new LinkedList<>();
     }
 
     public int size()
     {
-        return filled;
+        return list.size();
     }
 
     public void put(String value)
     {
-        int key = hashFun(value);
-        if (slots[key] == null) {
-            slots[key] = value;
-            filled++;
+        if (!list.contains(value)) {
+            list.addLast(value);
         }
     }
 
     public boolean get(String value)
     {
-        int key = hashFun(value);
-        return slots[key] != null;
+        return list.contains(value);
     }
 
     public boolean remove(String value)
     {
-        int key = hashFun(value);
-        if (slots[key] != null) {
-            slots[key] = null;
-            filled--;
-            return true;
+        int index = list.indexOf(value);
+        if (index == -1) {
+            return false;
         }
-        return false;
+        list.remove(index);
+        return true;
     }
 
     public PowerSet intersection(PowerSet set2)
     {
         PowerSet result = new PowerSet();
 
-        for (int i = 0; i < SIZE; i++) {
-            if (slots[i] != null && set2.get(slots[i])) {
-                result.put(slots[i]);
+        ListIterator<String> listIterator = list.listIterator();
+        while (listIterator.hasNext()) {
+            String next = listIterator.next();
+            if (set2.get(next)) {
+                result.put(next);
             }
         }
         return result;
@@ -64,14 +55,16 @@ public class PowerSet
     {
         PowerSet result = new PowerSet();
 
-        for (int i = 0; i < SIZE; i++) {
-            if (slots[i] != null) {
-                result.put(slots[i]);
-            }
+        ListIterator<String> listIterator = list.listIterator();
+        while (listIterator.hasNext()) {
+            String next = listIterator.next();
+            result.put(next);
+        }
 
-            if (set2.slots[i] != null) {
-                result.put(set2.slots[i]);
-            }
+        ListIterator<String> listIterator2 = set2.list.listIterator();
+        while (listIterator2.hasNext()) {
+            String next = listIterator2.next();
+            result.put(next);
         }
         return result;
     }
@@ -80,9 +73,11 @@ public class PowerSet
     {
         PowerSet result = new PowerSet();
 
-        for (int i = 0; i < SIZE; i++) {
-            if (slots[i] != null && !set2.get(slots[i])) {
-                result.put(slots[i]);
+        ListIterator<String> listIterator = list.listIterator();
+        while (listIterator.hasNext()) {
+            String next = listIterator.next();
+            if (!set2.get(next)) {
+                result.put(next);
             }
         }
         return result;
@@ -91,12 +86,14 @@ public class PowerSet
     public boolean isSubset(PowerSet set2)
     {
         int counter = 0;
-        for (int i = 0; i < SIZE && counter < set2.size(); i++) {
-            if (slots[i] != null && set2.get(slots[i])) {
+        ListIterator<String> listIterator2 = set2.list.listIterator();
+
+        while (listIterator2.hasNext()) {
+            String next = listIterator2.next();
+            if (this.get(next)) {
                 counter++;
             }
         }
-
         return counter == set2.size();
     }
 }
