@@ -1,0 +1,35 @@
+mpSett - marketplaceSettings
+// объект содержащий настройки маркетплейса
+
+tasksStatus - tasksStatusesDictionary
+// словарь для храния текущих статусов задач taskId => status
+
+typeFilter - filterByTypeString
+// строка фильтра по типу
+
+pageFail - failedOperationForPage
+// объект представляющий неуспешную операцию обработки страницы
+
+brands - brandsUrlsList
+// список брендированныз url-ов
+
+stats - searchStatistics
+// объект содержащий поисковую статистику
+
+params - orderProvisioningParametersList
+// список параметров для обработки ордера
+
+curLoc - currentLocale
+// текущая локаль
+
+rcCounter - removedCategoriesCounter
+// счетчик количества удаленных категорий
+
+attr - orderAttributesList
+// список аттрибутов заказа
+
+uom - unitOfMeasure
+// единица измерения (штуки, гигабайты и т.д)
+
+excludedIds - excludedFromSearchingServicePlansIdsList
+// список айдишников сервис планов которые не участвуют в поиске
