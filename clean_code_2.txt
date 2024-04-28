@@ -1,0 +1,17 @@
+6.1
+
+6.2
+var prepareQueryHelper -> var elasticSearcQueryFacade
+var searchResponseHelper -> var searchResponseDecorator
+SearchEventsQueue
+class IntroductionTourMixin
+
+
+6.3
+
+6.4
+var icons -> var iconsList
+var items -> var invisiblePagesList
+var serviceName -> var serviceNameForResourceType
+var changes -> var updatedProperties
+var planIds -> var servicePlanIdsList
