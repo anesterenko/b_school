@@ -12,6 +12,9 @@ SearchEventsQueue
 class IntroductionTourMixin
 
 6.3
+var productOwnerId = product.OwnerId
+
+
 
 
 
