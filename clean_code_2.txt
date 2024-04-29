@@ -1,4 +1,9 @@
 6.1
+ var parameters = new ElSearchQueryParameters -> var allVisibleItemsForOwnerQueryParameters
+var identityId = ApiContext.IdentityId -> var loggedInUserId = ApsApiContext.IdentityId
+var cacheKeys -> var requestedPlanIds
+var categoriesToDisplayPlansMap -> var assignedToPlansCategories
+var resultsConcurentBag -> var processedCategoriesResults
 
 6.2
 var prepareQueryHelper -> var elasticSearcQueryFacade
@@ -6,12 +11,13 @@ var searchResponseHelper -> var searchResponseDecorator
 SearchEventsQueue
 class IntroductionTourMixin
 
-
 6.3
+
+
 
 6.4
 var icons -> var iconsList
 var items -> var invisiblePagesList
 var serviceName -> var serviceNameForResourceType
 var changes -> var updatedProperties
-var planIds -> var servicePlanIdsList
+var spApsIdFromDp -> var servicePlanApsIdsFromDisplayPlans
