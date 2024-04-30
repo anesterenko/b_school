@@ -1,0 +1,9 @@
+7.1
+if (config.IsEmpty) -> if (config.Empty)
+if (taskIsScheduled) -> if (taskScheduled)
+if (isSyncRequestPhase) -> if (syncRequestPhase)
+if (subscriptionPeriod.IsTrial) -> if (subscriptionPeriod.Trial)
+
+
+
+                   
