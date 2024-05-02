@@ -3,7 +3,26 @@ if (config.IsEmpty) -> if (config.Empty)
 if (taskIsScheduled) -> if (taskScheduled)
 if (isSyncRequestPhase) -> if (syncRequestPhase)
 if (subscriptionPeriod.IsTrial) -> if (subscriptionPeriod.Trial)
+if (isSuccessfull) -> if (success)
 
+7.2
+if (hasEmptyValues) -> if (empty)
+if (results.Any()) -> var found = results.Any(); if (found) {}
 
+7.3
+for (i = 0, len = arr.length; i < len; ++i) {
+   utils.invokeCallback(arr[i]);
+}   -> 
+for (callbackIndex = 0, len = arr.length; callbackIndex < len; ++callbackIndex) {
+   utils.invokeCallback(arr[callbackIndex]);
+}
 
-                   
+7.4
+var brandId = configuration.Brand.Id;
+var createdBrandId = CreateNewBrand();
+ -> 
+var oldBrandId = configuration.Brand.Id;
+var newBrandId = CreateNewBrand();
+
+7.5
+ var pp = pdiPlans.FirstOrDefault(...); ->  var firstPdiPlan = pdiPlans.FirstOrDefault(...);
