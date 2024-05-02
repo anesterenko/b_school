@@ -7,6 +7,7 @@ if (isSuccessfull) -> if (success)
 
 7.2
 if (hasEmptyValues) -> if (empty)
+------------
 if (results.Any()) -> var found = results.Any(); if (found) {}
 
 7.3
@@ -23,6 +24,21 @@ var createdBrandId = CreateNewBrand();
  -> 
 var oldBrandId = configuration.Brand.Id;
 var newBrandId = CreateNewBrand();
+------------
+const firstTier = feeTiers.reduce(.....);
+const lastTier = feeTiers.reduce(.....);
+->
+const leastTier = feeTiers.reduce(.....);  // более подходящие имена в контексте цен
+const greatestTier = feeTiers.reduce(.....]);
 
 7.5
- var pp = pdiPlans.FirstOrDefault(...); ->  var firstPdiPlan = pdiPlans.FirstOrDefault(...);
+var pp = pdiPlans.FirstOrDefault(...); ->  var firstPdiPlan = pdiPlans.FirstOrDefault(...);
+------------
+var pages = GetPagesWithDisplayPlans(); -> var pagesForProcessing = GetPagesWithDisplayPlans(); 
+------------
+var mpApp = new Application
+{
+    IsNewHomePageEnabled = true
+};
+controllerService.Resources.Put(mpApp);  
+-> controllerService.Resources.Put(new Application {IsNewHomePageEnabled = true})
