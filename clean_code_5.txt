@@ -1,0 +1,59 @@
+var result = existingDisplayPlan != null
+                ? UpdateDisplayPlan(existingDisplayPlan, servicePlan, existedIndexedPlans)
+                : CreateNewDisplayPlan(servicePlan);
+
+var planProcessingResult = existingDisplayPlan != null
+                ? UpdateDisplayPlan(existingDisplayPlan, servicePlan, existedIndexedPlans)
+                : CreateNewDisplayPlan(servicePlan);
+-----------------
+public void AreEqualTest(MultiLangString str1, MultiLangString str2)
+public void AreEqualTest(MultiLangString expectedMultilangString, MultiLangString actualmultilangString)
+-----------------
+var serverNumber = _options.Value.Servers.Count;
+var numServers = _options.Value.Servers.Count;
+-----------------
+var attrList = [];
+var accountAttributes = [];
+-----------------
+var objPropArr = {
+                id: attr.attributeID,
+                gridSize: 'md-12',
+                label: attrType.name,
+                .....
+
+var selectorElementProperties = {....}
+-----------------
+const tabList = [quoteTabId, cartTabId];
+const visibleTabIds = [quoteTabId, cartTabId];
+-------
+var status = new Status({})
+var statusWidget = new Status({});
+-----------------
+const def = getAccount().then(function (account)...
+const getAccountDeferred = getAccount().then(function (account)....
+-----------------
+let inputs = redirectData.postArguments || [];
+let postArguments = redirectData.postArguments || [];
+-----------------
+public const int RegexDenialTimeout = 500;
+public const int RegexDenialTimeoutMs = 500;
+-----------------
+var keepAliveTimeout = serverOptions.Limits.KeepAliveTimeout;
+var minExpectedTimeout = TimeSpan.FromMinutes(5);
+
+var keepAliveTimeoutMinuntes = serverOptions.Limits.KeepAliveTimeout;
+var expectedTimeoutMinuntes = TimeSpan.FromMinutes(5);
+-----------------
+var now = dateTime.getUnixTimestamp();
+var timestampCurrentMoment = dateTime.getUnixTimestamp();
+
+
+
+
+
+
+
+
+
+
+
