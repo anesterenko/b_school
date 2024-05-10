@@ -1,0 +1,13 @@
+PrivilegeManager -> Privileges
+ProductCatalogManager -> ProductCatalog
+DelegatedPlansHelper -> DelegatedPlan
+SharedCartManager -> SharedCart
+MemoryHelper -> MemoryTool
+
+PoliciesService.GetPolicy -> PoliciesService.Get
+ProductService.GetProduct -> ProductService.Get
+CategoryIconsService.GetCategoryIcons -> CategoryIconsService.Get
+AsyncTaskManager.RunTask -> AsyncTask.Run
+AsyncTaskManager.RemoveTask -> AsyncTask.Remove
+AsyncTaskManager.GetTaskStatus -> AsyncTask.GetStatus
+ProductModelService.GetProductModel -> ProductModelService.Get
